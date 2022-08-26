@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>total todos : 2</h1>
+    <h2>todos done : 1/2</h2>
+    <input type="text" name="todo" />
+    <button>ajouter</button>
+    <ul>
+      <li>
+        <input type="checkbox" /><input value="echri baguette" /><button>
+          save
+        </button>
+        <button>delete</button>
+      </li>
+      <li><input type="checkbox" />echri khobz</li>
+    </ul>
+  </body>
+  <script>
+    let listeHTML = document.querySelector("ul");
+    let addButton = document.querySelector("button");
+    let inputTodo = document.querySelector("input");
+    // kif nenzel al button ykharali alert ("rak nzelt")
+    addButton.onclick = () => {
+      console.log(inputTodo.value);
+      let li = document.createElement("li");
+      li.innerText = inputTodo.value;
+      listeHTML.appendChild(li);
+    };
+    document
+      .querySelectorAll("*")
+      .forEach((el) => el.addEventListener("mouseover", (e) => {}));
+  </script>
+</html>

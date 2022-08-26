@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div></div>
+    <h1></h1>
+  </body>
+  <script>
+    document.querySelector("h1").innerText = "<i>Bonjour</i>";
+    let div = document.querySelector("div");
+    div.style.border = "2px solid orange";
+    //div.innerHTML += "<h1 class='card-title'>Card </h1>";
+    //div.innerHTML += "<p>Card description </p>";
+    //div.innerHTML +=
+    // "<img src='https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png' />";
+    let h1 = document.createElement("h1");
+    h1.innerText = "card";
+    h1.classList.add("card-title");
+    let text = document.createTextNode("Bonjour ");
+    div.appendChild(text);
+  </script>
+</html>
