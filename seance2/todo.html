@@ -7,33 +7,64 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>total todos : 2</h1>
-    <h2>todos done : 1/2</h2>
-    <input type="text" name="todo" />
+    <h1>total todos : <span id="totalCounter"> </span></h1>
+    <h2>todos done : <span id="doneCounter"> </span></h2>
+    <input type="text" name="todo" value="" />
     <button>ajouter</button>
-    <ul>
-      <li>
-        <input type="checkbox" /><input value="echri baguette" /><button>
-          save
-        </button>
-        <button>delete</button>
-      </li>
-      <li><input type="checkbox" />echri khobz</li>
-    </ul>
+    <ul></ul>
   </body>
   <script>
-    let listeHTML = document.querySelector("ul");
-    let addButton = document.querySelector("button");
-    let inputTodo = document.querySelector("input");
+    const listeHTML = document.querySelector("ul");
+    const addButton = document.querySelector("button");
+    const inputTodo = document.querySelector("input");
+    const totalCounter = document.querySelector("#totalCounter");
+    const doneCounter = document.querySelector("#doneCounter");
     // kif nenzel al button ykharali alert ("rak nzelt")
+    let totalTodos = 0;
     addButton.onclick = () => {
-      console.log(inputTodo.value);
-      let li = document.createElement("li");
-      li.innerText = inputTodo.value;
-      listeHTML.appendChild(li);
+      addTodo();
+    };
+    inputTodo.onkeydown = (e) => {
+      if (e.key == "Enter") {
+        addTodo();
+      }
     };
     document
       .querySelectorAll("*")
       .forEach((el) => el.addEventListener("mouseover", (e) => {}));
+
+    const addTodo = (e) => {
+      if (!inputTodo.value.length) {
+        alert("element feregh");
+        return false;
+      }
+      let li = document.createElement("li");
+      let checkbox = document.createElement("input");
+      checkbox.setAttribute("type", "checkbox");
+      let input = document.createElement("input");
+      input.setAttribute("value", inputTodo.value);
+      let saveButton = document.createElement("button");
+      saveButton.innerText = "save";
+      let deleteButton = document.createElement("button");
+      deleteButton.innerText = "delete";
+      deleteButton.addEventListener("click", deleteTodo);
+      li.appendChild(checkbox);
+      li.appendChild(input);
+      li.appendChild(saveButton);
+      li.appendChild(deleteButton);
+      inputTodo.value = "";
+      listeHTML.appendChild(li);
+      totalTodos++;
+      updateCounters();
+    };
+
+    const updateCounters = () => {
+      totalCounter.innerText = totalTodos;
+    };
+
+    const deleteTodo = (e) => {
+      e.target.parentNode.remove();
+      console.log("delete clicked ");
+    };
   </script>
 </html>
