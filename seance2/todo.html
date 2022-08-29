@@ -43,11 +43,14 @@
       checkbox.setAttribute("type", "checkbox");
       let input = document.createElement("input");
       input.setAttribute("value", inputTodo.value);
+      input.style.border = "none";
       let saveButton = document.createElement("button");
-      saveButton.innerText = "save";
+      saveButton.innerText = "edit";
       let deleteButton = document.createElement("button");
       deleteButton.innerText = "delete";
       deleteButton.addEventListener("click", deleteTodo);
+      checkbox.onclick = markAsDone;
+      li.setAttribute("id", totalTodos);
       li.appendChild(checkbox);
       li.appendChild(input);
       li.appendChild(saveButton);
@@ -60,11 +63,21 @@
 
     const updateCounters = () => {
       totalCounter.innerText = totalTodos;
+      let done = [...document.querySelectorAll("[type=checkbox]")].filter(
+        (c) => c.checked
+      ).length;
+      console.log(done);
+      doneCounter.innerText = done;
     };
 
     const deleteTodo = (e) => {
       e.target.parentNode.remove();
       console.log("delete clicked ");
     };
+
+    function markAsDone(e) {
+      updateCounters();
+      e.target.parentElement.children[1].style.textDecoration = "line-through";
+    }
   </script>
 </html>

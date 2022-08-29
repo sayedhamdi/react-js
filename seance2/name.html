@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="name" />
+    <button>save</button>
+  </body>
+  <script>
+    const input = document.querySelector("input");
+
+    const saveButton = document.querySelector("button");
+
+    input.value = localStorage.getItem("name");
+    const handleClick = (e) => {
+      console.log(input.value);
+      localStorage.setItem("name", input.value);
+    };
+    saveButton.addEventListener("click", handleClick);
+
+    todoListe = [
+      {
+        id: "0",
+        name: "task 1",
+        checked: false,
+      },
+      {
+        id: "1",
+        name: "task 2",
+        checked: true,
+      },
+    ];
+    //saveButton.onclick = handleClick;
+  </script>
+</html>
