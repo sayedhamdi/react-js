@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    EURO
+    <input type="text" />
+    <select>
+      <option value="TND">TND</option>
+    </select>
+    <div></div>
+  </body>
+  <script>
+    const url =
+      "http://api.exchangeratesapi.io/v1/latest?access_key=01516af766696ad129b060a627689d8e";
+
+    let rates = [];
+    let div = document.querySelector("div");
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        rates = data.rates;
+        console.log(data.rates);
+      });
+    let input = document.querySelector("input");
+    input.onkeyup = exchange;
+    function exchange() {
+      div.innerHTML = rates["AED"] * input.value;
+    }
+  </script>
+</html>

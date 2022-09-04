@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #ktiba {
+        font-weight: bold;
+      }
+      button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" name="" id="text" />
+    <button>
+      <span>ajoute</span>
+      <p id="ktiba"></p>
+      <span>a la liste</span>
+    </button>
+
+    <hr />
+    <div id="list">
+      <p>task 1</p>
+    </div>
+  </body>
+  <script>
+    const input = document.querySelector("#text");
+    const button = document.querySelector("button");
+    const ktiba = document.querySelector("#ktiba");
+    const liste = document.querySelector("#list");
+
+    function handleChange() {
+      ktiba.innerText = input.value;
+    }
+    function handleAjout() {
+      // creer un element p
+      // ajouter le text ktiba a l element p
+      // ajouter p a la liste
+      let p = ktiba.cloneNode(true);
+      liste.appendChild(p);
+      ktiba.innerHTML = "";
+      input.value = "";
+    }
+    button.onclick = handleAjout;
+    input.onkeyup = handleChange;
+  </script>
+</html>
