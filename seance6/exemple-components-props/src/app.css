@@ -1,0 +1,18 @@
+.navbar {
+  font-size: 40px;
+  color: red;
+}
+.blue {
+  color: blue;
+}
+.bg-orange {
+  background: orange;
+}
+
+.text-small {
+  font-size: 15px;
+}
+
+.text-big {
+  font-size: 40px;
+}
